@@ -10,5 +10,8 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "invoices", path = "invoices")
 public interface InvoiceRepository extends PagingAndSortingRepository<Invoice, Long> {
     List<Invoice> findAllByTransactionDtBetween(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDt);
+
+    List<Invoice> findByApiStatus(String apiStatus);
+
 }
 
