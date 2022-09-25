@@ -2,12 +2,24 @@ package net.kidzmath.springdatarest;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
 public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String type;
     private String cifNo;
-    private String mame;
+    private String name;
+
+    public String getCifNo() {
+        return cifNo;
+    }
+
+    public void setCifNo(String cifNo) {
+        this.cifNo = cifNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

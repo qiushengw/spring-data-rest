@@ -28,11 +28,19 @@ public class Invoice implements Serializable {
     private String servicingFees;
     private LocalDateTime transactionDt;
     private String apiStatus;
-    @ManyToOne
-    @JoinColumn(name = "buyerId")
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "cifNo", column = @Column(name = "buyerCifNo")),
+            @AttributeOverride( name = "name", column = @Column(name = "buyerName")),
+    })
     private Customer buyer;
-    @ManyToOne
-    @JoinColumn(name = "sellerId")
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "cifNo", column = @Column(name = "sellerCifNo")),
+            @AttributeOverride( name = "name", column = @Column(name = "sellerName")),
+    })
     private Customer seller;
 
     public long getId() {
